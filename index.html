@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>جمعه — فرهاد مهراد</title>
+<meta name="description" content="صفحه‌ای برای «جمعه»؛ ترانهٔ شهیار قنبری، آهنگ اسفندیار منفردزاده و صدای فرهاد مهراد — ۱۳۵۰" />
+<meta name="theme-color" content="#0b0d0c" />
+
+<meta property="og:type" content="music.song" />
+<meta property="og:title" content="جمعه — فرهاد مهراد" />
+<meta property="og:description" content="توی قابِ خیسِ این پنجره‌ها… | شعر: شهیار قنبری، آهنگ: اسفندیار منفردزاده، ۱۳۵۰" />
+<meta property="og:image" content="assets/img/cover.jpg" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b0d0c'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23d9a441' stroke-width='3'/%3E%3Ccircle cx='50' cy='50' r='6' fill='%23d9a441'/%3E%3C/svg%3E" />
+
+<link rel="preload" href="assets/fonts/lalezar-arabic-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/vazirmatn-arabic-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="assets/css/style.css" />
+<noscript><style>.stanza span{opacity:1!important;transform:none!important}.disc{animation:none}</style></noscript>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="glow" aria-hidden="true"></div>
+
+<header class="topbar">
+  <span class="topbar__mark">ف. م</span>
+  <span class="topbar__line" aria-hidden="true"></span>
+  <span class="topbar__meta">صفحهٔ ۴۵ دور · ۱۳۵۰</span>
+</header>
+
+<main>
+
+  <!-- ─────────────── قهرمان ─────────────── -->
+  <section class="hero" id="top">
+    <div class="hero__art">
+      <figure class="sleeve">
+        <img src="assets/img/cover.jpg" alt="تصویر جلد: کوچه‌ای خالی در غروب جمعه" width="1024" height="1024" />
+        <span class="sleeve__edge" aria-hidden="true"></span>
+      </figure>
+
+      <button class="disc" id="discBtn" type="button" aria-label="پخش یا توقف آهنگ">
+        <canvas class="disc__canvas" id="viz" width="320" height="320" aria-hidden="true"></canvas>
+        <span class="disc__label" aria-hidden="true">
+          <span class="disc__title">جمعه</span>
+          <span class="disc__sub">فرهاد</span>
+        </span>
+        <span class="disc__hole" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="hero__text">
+      <p class="eyebrow">ترانه‌ای برای غروب جمعه</p>
+      <h1 class="title">جمعه</h1>
+      <p class="artist">فرهاد مهراد</p>
+
+      <ul class="credits">
+        <li><span>شعر</span>شهیار قنبری</li>
+        <li><span>آهنگ و تنظیم</span>اسفندیار منفردزاده</li>
+        <li><span>سال</span>۱۳۵۰</li>
+      </ul>
+
+      <!-- پخش‌کننده -->
+      <div class="player" id="player" data-state="idle">
+        <audio id="audio" preload="metadata"></audio>
+
+        <div class="player__row">
+          <button class="play" id="playBtn" type="button" aria-label="پخش">
+            <svg class="play__icon play__icon--play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+            <svg class="play__icon play__icon--pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5.5h4v13H7zM13 5.5h4v13h-4z"/></svg>
+            <svg class="play__icon play__icon--load" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="42 14" stroke-linecap="round"/></svg>
+          </button>
+
+          <div class="player__track">
+            <div class="player__head">
+              <span class="player__name">جمعه <em>· نسخهٔ اصلی</em></span>
+              <span class="player__time"><span id="cur">۰:۰۰</span><span class="sep">/</span><span id="dur">۴:۴۵</span></span>
+            </div>
+
+            <div class="seek" id="seek" role="slider" tabindex="0"
+                 aria-label="جای پخش" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="seek__buffer" id="buffer"></div>
+              <div class="seek__fill" id="fill"><span class="seek__knob"></span></div>
+            </div>
+
+            <div class="player__foot">
+              <p class="player__hint" id="hint">برای پخش، دکمه را بزن — یا فایل MP3 را روی همین کادر رها کن.</p>
+              <div class="volume">
+                <button class="volume__btn" id="muteBtn" type="button" aria-label="بی‌صدا">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="wave" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </button>
+                <input class="volume__range" id="vol" type="range" min="0" max="1" step="0.01" value="0.85" aria-label="بلندی صدا" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="player__drop">
+          <span class="player__dropText">فایل صوتی را اینجا رها کن</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <p class="note">
+        فایل صوتیِ این صفحه به دلیل حق نشر همراه مخزن نیست. برای پخش دائمی، آهنگ را با نام
+        <code>assets/audio/jomeh.mp3</code> کنار پروژه بگذارید — یا همین حالا فایل را داخل پخش‌کننده رها کنید.
+      </p>
+    </div>
+
+    <a class="scrollcue" href="#lyrics" aria-label="رفتن به متن ترانه"><span></span></a>
+  </section>
+
+  <!-- ─────────────── متن ترانه ─────────────── -->
+  <section class="lyrics" id="lyrics">
+    <header class="section__head">
+      <p class="eyebrow">متن ترانه</p>
+      <h2 class="section__title">توی قابِ خیسِ این پنجره‌ها</h2>
+      <p class="section__by">شهیار قنبری</p>
+    </header>
+
+    <div class="poem" id="poem">
+      <p class="stanza">
+        <span>توی قابِ خیسِ این پنجره‌ها</span>
+        <span>عکسی از جمعهٔ غمگین می‌بینم</span>
+        <span>چه سیاهه به تنش رختِ عزا</span>
+        <span>تو چشاش ابرای سنگین می‌بینم</span>
+      </p>
+
+      <p class="stanza refrain">
+        <span>داره از ابر سیاه خون می‌چکه</span>
+        <span>جمعه‌ها خون جای بارون می‌چکه</span>
+      </p>
+
+      <p class="stanza">
+        <span>نفسم درنمی‌آد، جمعه‌ها سر نمی‌آد</span>
+        <span>کاش می‌بستم چشامو، این ازم برنمی‌آد</span>
+      </p>
+
+      <p class="stanza refrain">
+        <span>داره از ابر سیاه خون می‌چکه</span>
+        <span>جمعه‌ها خون جای بارون می‌چکه</span>
+      </p>
+
+      <p class="stanza">
+        <span>عمرِ جمعه به هزار سال می‌رسه</span>
+        <span>جمعه‌ها غم دیگه بیداد می‌کنه</span>
+        <span>آدم از دستِ خودش خسته می‌شه</span>
+        <span>با لبای بسته فریاد می‌کنه</span>
+      </p>
+
+      <p class="stanza refrain">
+        <span>داره از ابر سیاه خون می‌چکه</span>
+        <span>جمعه‌ها خون جای بارون می‌چکه</span>
+      </p>
+
+      <p class="stanza">
+        <span>جمعه وقتِ رفتنه، موسمِ دل کندنه</span>
+        <span>خنجر از پشت می‌زنه، اون که همراهِ منه</span>
+      </p>
+
+      <p class="stanza refrain">
+        <span>داره از ابر سیاه خون می‌چکه</span>
+        <span>جمعه‌ها خون جای بارون می‌چکه</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ─────────────── درباره ─────────────── -->
+  <section class="about" id="about">
+    <figure class="about__img">
+      <img src="assets/img/record.jpg" alt="صفحهٔ گرامافون و جلد کاغذی روی میز چوبی" loading="lazy" width="1024" height="1024" />
+    </figure>
+
+    <div class="about__text">
+      <p class="eyebrow">دربارهٔ ترانه</p>
+      <h2 class="section__title">جمعه، صدای اعتراضِ یک غروب</h2>
+      <p>
+        «جمعه» را شهیار قنبری سرود و اسفندیار منفردزاده آهنگ ساخت و تنظیم کرد؛ فرهاد مهراد
+        آن را در سال ۱۳۵۰ برای فیلم <em>خداحافظ رفیق</em> به کارگردانی امیر نادری خواند.
+        منفردزاده بعدها گفت این ترانه را متأثر از قیام سیاهکل ساخته بود، اما این نکته را
+        زمانی که از قنبری خواست شعرش را بنویسد، با او در میان نگذاشت.
+      </p>
+      <p>
+        صفحهٔ «جمعه» اولش تهیه‌کننده‌ای پیدا نمی‌کرد و خیلی زود یکی از پرفروش‌ترین
+        صفحه‌های موسیقی ایران شد. هفت سال بعد، پس از ۱۷ شهریور ۱۳۵۷، منفردزاده همان
+        ترانه را با فضایی تازه‌تر بازتنظیم کرد و نامش را «جمعه برای جمعه» گذاشت.
+      </p>
+
+      <dl class="facts">
+        <div><dt>خواننده</dt><dd>فرهاد مهراد</dd></div>
+        <div><dt>ترانه‌سرا</dt><dd>شهیار قنبری</dd></div>
+        <div><dt>آهنگساز</dt><dd>اسفندیار منفردزاده</dd></div>
+        <div><dt>فیلم</dt><dd>خداحافظ رفیق (۱۳۵۰)</dd></div>
+        <div><dt>مدت</dt><dd>۴:۴۵</dd></div>
+        <div><dt>فرمت اصلی</dt><dd>صفحهٔ گرامافون</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="quote">
+    <blockquote>
+      «متن <b>جمعه</b> به گونه‌ای بود که گویی میلیون‌ها نفر دارند آن را فریاد می‌کنند.»
+      <cite>فرهاد مهراد</cite>
+    </blockquote>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>صفحه‌ای بی‌طرف و غیرتجاری، به یادِ فرهاد مهراد (۱۳۲۲ – ۱۳۸۱).</p>
+  <p class="footer__small">تصاویر این صفحه تولیدشده با هوش مصنوعی‌اند و متن ترانه از منابع عمومی نقل شده است.</p>
+  <a href="#top" class="totop">بازگشت به بالا ↑</a>
+</footer>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

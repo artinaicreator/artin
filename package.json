@@ -1,0 +1,12 @@
+{
+  "name": "jomeh-farhad",
+  "version": "1.0.0",
+  "private": true,
+  "description": "صفحهٔ تک‌صفحه‌ای برای ترانهٔ «جمعه» فرهاد مهراد",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["farhad", "jomeh", "persian", "single-page"],
+  "license": "UNLICENSED"
+}
