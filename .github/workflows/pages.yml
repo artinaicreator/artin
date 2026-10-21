@@ -24,15 +24,25 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v5
         with:
-          # اگر Pages هنوز در تنظیمات مخزن فعال نشده باشد، همین‌جا فعال می‌شود
+          # اگر Pages در تنظیمات مخزن فعال نشده باشد، خودش فعال می‌کند
           enablement: true
+
+      - name: Assemble static site
+        run: |
+          mkdir -p _site
+          cp index.html .nojekyll _site/
+          cp -R assets _site/
+          # فایل صوتی دارای حق نشر هرگز منتشر نمی‌شود
+          rm -f _site/assets/audio/*.mp3 _site/assets/audio/*.m4a _site/assets/audio/*.wav
+          du -sh _site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
   deploy:
     needs: build
