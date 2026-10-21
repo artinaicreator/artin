@@ -62,7 +62,7 @@ const server = http.createServer((req, res) => {
 
     // پشتیبانی از بازه (برای جلو/عقب بردن آهنگ)
     const range = req.headers.range;
-    if (range && type.startsWith('audio/')) {
+    if (range && req.method === 'GET' && type.startsWith('audio/')) {
       const m = /bytes=(\d*)-(\d*)/.exec(range);
       const start = m && m[1] ? Number(m[1]) : 0;
       const end = m && m[2] ? Number(m[2]) : st.size - 1;
@@ -85,6 +85,20 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, HOST, () => {
-  console.log(`جمعه — پیش‌نمایش روی http://localhost:${PORT}`);
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`پورت ${PORT} اشغال است. یا پروسهٔ قبلی را ببندید یا PORT دیگری بدهید:`);
+    console.error(`  PORT=5174 npm start`);
+    process.exit(1);
+  }
+  console.error('خطای سرور:', err.message);
+  process.exit(1);
 });
+
+server.listen(PORT, HOST, () => {
+  console.log(`جمعه — پیش‌نمایش روی http://localhost:${PORT} (${HOST})`);
+});
+
+for (const sig of ['SIGINT', 'SIGTERM']) {
+  process.on(sig, () => server.close(() => process.exit(0)));
+}
